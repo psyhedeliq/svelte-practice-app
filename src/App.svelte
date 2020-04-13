@@ -5,10 +5,19 @@
   let title = "";
   let image = "";
   let description = "";
-  let done = false;
+  let formState = "empty";
 
   const addContact = () => {
-    done = true;
+    if (
+      name.trim().length === 0 ||
+      title.trim().length === 0 ||
+      image.trim().length === 0 ||
+      description.trim().length === 0
+    ) {
+      formState = "invalid";
+      return;
+    }
+    formState = "done";
   };
 </script>
 
@@ -16,6 +25,9 @@
   #form {
     width: 30rem;
     max-width: 100%;
+  }
+  .invalidInput {
+    color: red;
   }
 </style>
 
@@ -40,10 +52,14 @@
 
 <button on:click={addContact}>Add Contact Card</button>
 
-{#if done}
+{#if formState === 'done'}
   <ContactCard
     userName={name}
     jobTitle={title}
     {description}
     userImage={image} />
+{:else if formState === 'invalid'}
+  <p class="invalidInput">Invalid input!</p>
+{:else}
+  <p>Please fill all the fields!</p>
 {/if}
