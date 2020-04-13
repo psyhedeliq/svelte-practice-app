@@ -64,15 +64,18 @@
 <button on:click={addContact}>Add Contact Card</button>
 
 {#if formState === 'invalid'}
-  <p class="invalidInput">Invalid input!</p>
+  <p class="invalidInput">Invalid input! Please complete all the fields!</p>
 {:else}
-  <p>Please fill all the fields!</p>
+  <p>Please fill all the fields and hit the button!</p>
 {/if}
 
-{#each createdContactsList as createdContact}
+{#each createdContactsList as createdContact, idx}
+  <h1># {idx + 1}</h1>
   <ContactCard
     userName={createdContact.name}
     jobTitle={createdContact.jobTitle}
     description={createdContact.description}
     userImage={createdContact.imageUrl} />
+{:else}
+  <p>Please start adding contacts!</p>
 {/each}
