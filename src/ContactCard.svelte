@@ -11,6 +11,7 @@
     max-width: 30rem;
     border-radius: 5px;
     margin: 1rem 0;
+    background: white;
   }
 
   header {
@@ -26,7 +27,7 @@
   }
 
   .thumb-placeholder {
-    background-color: #ccc;
+    background: #ccc;
   }
 
   img {
